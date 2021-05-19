@@ -74,11 +74,16 @@ const usuariosDelete = async(req, res) => {
     // Lo borramos fisicamente
     // const usuario = await Usuario.findByIdAndDelete( id );
 
+    // Usuario autenticado que hizo el delete
+    // Recibimos lo seteado en 'validar-jwt'
+    const usuarioAutenticado = req.usuario;
+
     // "Borrado" cambiar estado a false
     const usuario = await Usuario.findByIdAndUpdate( id, {estado: false} );
 
     res.json({ 
-        usuario
+        usuario,
+        usuarioAutenticado
     });
 }
 

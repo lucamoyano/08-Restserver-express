@@ -2,7 +2,13 @@ const { Router } = require('express');
 const { check } = require('express-validator');
 
 const { esRoleValido, existeUsuarioId, emailExiste } = require('../helpers/db-validator');
-const { validarCampos } = require('../middlewares/validar-campos');
+
+const {
+    validarCampos, 
+    validarJWT, 
+    validarAdminRol, 
+    validarRol 
+} = require('../middlewares');
 
 const {
     usuariosGet,
@@ -35,7 +41,12 @@ router.post('/',[
     validarCampos 
 ],usuariosPost);
 
+// Los middlewares se ejecutan en orden
+// Lo seteado en req se puede obtener en los siguientes middleware
 router.delete('/:id',[
+    validarJWT,
+    //validarAdminRol, // Validar si es admin para realizar acciones
+    validarRol('ADMIN_ROLE','VENTAS_ROLE'), // Validar si tiene rol necesario para realizar accion
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom( existeUsuarioId ), 
     validarCampos 

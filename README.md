@@ -1,3 +1,5 @@
 # WebServer + RestServer
 
-Curso Node JS - Rest Server Básico CRUD
+Curso Node JS - Rest Server Básico 
+- CRUD mongodb
+- Autenticación JWT 

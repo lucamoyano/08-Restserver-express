@@ -33,8 +33,10 @@ const UsuarioSchema = new Schema({
 });
 
 // Ocultar versión y contraseña
+// Cambiar _id por uid
 UsuarioSchema.methods.toJSON = function() {
-    const { __v, password, ...usuario } = this.toObject();
+    const { __v, password, _id ,...usuario } = this.toObject();
+    usuario.uid = _id;
     return usuario;
 }
 
