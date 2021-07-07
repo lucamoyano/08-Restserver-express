@@ -4,4 +4,6 @@ node_modules/
 
 .env
 
-uploads/
+/uploads/
+/uploads/product/*
+/uploads/user/*
