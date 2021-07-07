@@ -5,7 +5,9 @@ const uploadFile = ( { files, extensionesValidas = ['png','jpg','jpeg','gif'], f
 
     return new Promise((resolve, reject) => {
         
+        // req.header('archivo');
         const { archivo } = files;
+
         const splitNombre = archivo.name.split('.');
         const extension = splitNombre[ splitNombre.length - 1];
 

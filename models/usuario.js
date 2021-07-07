@@ -30,6 +30,9 @@ const UsuarioSchema = new Schema({
     google: {
         type: Boolean,
         default: false
+    },
+    img_id: {
+        type: String
     }
 });
 
